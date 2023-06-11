@@ -2,6 +2,8 @@ image: alpine/edge
 packages: 
   - nodejs
   - npm
+sources:
+  - https://git.sr.ht/~hermiod/website
 tasks:
   - build: |
       npx @11ty/eleventy
