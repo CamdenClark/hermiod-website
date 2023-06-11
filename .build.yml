@@ -1,0 +1,7 @@
+image: alpine/edge
+packages: 
+  - nodejs
+  - npm
+tasks:
+  - build: |
+      npx @11ty/eleventy
