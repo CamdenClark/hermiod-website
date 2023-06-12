@@ -11,3 +11,4 @@ tasks:
   - build: |
       npx @11ty/eleventy
       s3cmd put _site/* s3://hermiod-website --recursive
+      s3cmd set s3://hermiod-website --acl-public --recursive
