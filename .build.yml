@@ -6,7 +6,7 @@ sources:
   - https://git.sr.ht/~hermiod/website
 secrets:
   - d2be42c9-509b-4d22-b8e3-5f999a9f4013
-  - c5fad0e4-a632-4e79-a1b5-e1cff532c927
+  - d6bb2ce4-88c3-4850-ac19-072415a57f05
 tasks:
   - build: |
       npx @11ty/eleventy
