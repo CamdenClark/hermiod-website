@@ -9,6 +9,7 @@ secrets:
   - d6bb2ce4-88c3-4850-ac19-072415a57f05
 tasks:
   - build: |
+      cd website
       npx @11ty/eleventy
       set +x
       export CLOUDFLARE_ACCOUNT_ID="$(cat ~/cloudflare_account_id.txt)"
