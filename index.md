@@ -1,3 +1,7 @@
+---
+layout: base
+---
+
 # Page header
 
 Testing
