@@ -12,4 +12,4 @@ tasks:
       npx @11ty/eleventy
       export CLOUDFLARE_ACCOUNT_ID="$(echo ~/cloudflare_account_id.txt)"
       export CLOUDFLARE_API_TOKEN="$(echo ~/cloudflare_api_token.txt)"
-      npx wrangler pages upload _site --project-name=hermiod-com
+      npx wrangler pages deploy _site --project-name=hermiod-com
