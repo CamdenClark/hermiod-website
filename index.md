@@ -3,10 +3,6 @@ layout: base
 title: hermiod's home
 ---
 
-# Page header
+# Hello
 
-Testing
-
-Test
-
-Maybe
+This is hermiod's homepage
