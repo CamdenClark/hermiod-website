@@ -6,9 +6,9 @@ packages:
 sources:
   - https://git.sr.ht/~hermiod/website
 secrets:
-  - fd6d743a-04f7-4845-8c0c-67a9a6170c19
+  - bb092798-abe0-44d1-b364-2e3f4e71595f
 tasks:
   - build: |
       npx @11ty/eleventy
-      s3cmd put _site/* s3://hermiod-website --recursive
-      s3cmd setacl s3://hermiod-website --acl-public --recursive
+      ./cloudflare_secrets.sh
+      npx wrangler pages publish dist --project-name=hermiod-com
