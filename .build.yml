@@ -5,11 +5,13 @@ packages:
 sources:
   - https://git.sr.ht/~hermiod/website
 secrets:
-  - d2be42c9-509b-4d22-b8e3-5f999a9f4013
+  - 53d51ddc-0c03-424d-9bbd-cc1ff1a8afd2
   - d6bb2ce4-88c3-4850-ac19-072415a57f05
 tasks:
   - build: |
       npx @11ty/eleventy
+      set +x
       export CLOUDFLARE_ACCOUNT_ID="$(cat ~/cloudflare_account_id.txt)"
       export CLOUDFLARE_API_TOKEN="$(cat ~/cloudflare_api_token.txt)"
+      set -x
       npx wrangler pages deploy _site --project-name=hermiod-com
