@@ -1,8 +1,7 @@
-image: archlinux
+image: alpine/edge
 packages: 
   - nodejs
   - npm
-  - s3cmd
 sources:
   - https://git.sr.ht/~hermiod/website
 secrets:
@@ -11,6 +10,6 @@ secrets:
 tasks:
   - build: |
       npx @11ty/eleventy
-      export CLOUDFLARE_ACCOUNT_ID="${echo ~/cloudflare_account_id.txt}"
-      export CLOUDFLARE_API_TOKEN="${echo ~/cloudflare_api_token.txt}"
-      npx wrangler pages publish dist --project-name=hermiod-com
+      export CLOUDFLARE_ACCOUNT_ID="$(echo ~/cloudflare_account_id.txt)"
+      export CLOUDFLARE_API_TOKEN="$(echo ~/cloudflare_api_token.txt)"
+      npx wrangler pages upload _site --project-name=hermiod-com
