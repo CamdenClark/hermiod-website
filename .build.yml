@@ -10,6 +10,6 @@ secrets:
 tasks:
   - build: |
       npx @11ty/eleventy
-      export CLOUDFLARE_ACCOUNT_ID="$(echo ~/cloudflare_account_id.txt)"
-      export CLOUDFLARE_API_TOKEN="$(echo ~/cloudflare_api_token.txt)"
+      export CLOUDFLARE_ACCOUNT_ID="$(cat ~/cloudflare_account_id.txt)"
+      export CLOUDFLARE_API_TOKEN="$(cat ~/cloudflare_api_token.txt)"
       npx wrangler pages deploy _site --project-name=hermiod-com
