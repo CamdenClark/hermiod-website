@@ -1,5 +1,6 @@
 ---
 layout: base
+title: hermiod's home
 ---
 
 # Page header
