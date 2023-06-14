@@ -15,4 +15,4 @@ tasks:
       export CLOUDFLARE_ACCOUNT_ID="$(cat ~/cloudflare_account_id.txt)"
       export CLOUDFLARE_API_TOKEN="$(cat ~/cloudflare_api_token.txt)"
       set -x
-      npx wrangler pages deploy _site --project-name=hermiod-com
+      npx wrangler pages deploy _site --project-name=hermiod-com --branch=main
