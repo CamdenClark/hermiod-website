@@ -10,6 +10,7 @@ secrets:
 tasks:
   - build: |
       cd website
+      npm ci
       npx @11ty/eleventy
       set +x
       export CLOUDFLARE_ACCOUNT_ID="$(cat ~/cloudflare_account_id.txt)"
