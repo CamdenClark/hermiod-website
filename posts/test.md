@@ -7,9 +7,25 @@ tags: post
 
 This is hermiod's test page[^test]
 
-::: warning aaa
+::: warn
 test
 :::
 
+
+::: warn 
+test
+:::
+
+
+::: ok
+test
+:::
+
+
+::: plain foo
+```clojure
+(def foo "test")
+```
+:::
 
 [^test]: "test"

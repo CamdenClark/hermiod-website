@@ -1,24 +1,49 @@
 const markdownItFootnote = require("markdown-it-footnote");
 const markdownItContainer = require("markdown-it-container");
+const markdownItPrism = require("markdown-it-prism");
 
-module.exports = function(eleventyConfig) {
-  eleventyConfig.amendLibrary("md", mdLib => {
-      mdLib.use(markdownItFootnote)
+const registerBox = (mdLib, color) => {
+    mdLib.use(markdownItContainer, color, {
+        validate: function (params) {
+            return params.trim().match(`${color}\s?(.*)$`);
+        },
 
-      mdLib.use(markdownItContainer, 'warning', {
+        render: function (tokens, idx) {
+            if (!tokens[idx]) {
+                return;
+            }
+            const m = tokens[idx].info.trim().match(`${color}\s?(.*)$`);
+            if (tokens[idx].nesting === 1) {
+                if (m[1] !== undefined) {
+                    return (
+                        `<div class="box ${color}"><strong class="block titlebar">` +
+                        mdLib.utils.escapeHtml(m[1]) +
+                        "</strong>"
+                    );
+                } else {
+                    return `<div class="box ${color}">`;
+                }
+            } else {
+                return "</div>\n";
+            }
+        },
+    });
+};
+module.exports = function (eleventyConfig) {
+    eleventyConfig.amendLibrary("md", (mdLib) => {
+        mdLib.use(markdownItFootnote);
 
-      validate: function(params) {
-          return true;
-        // return params.trim().match(/^warning\s+(.*)$/);
-      },
+        registerBox(mdLib, "warn");
+        registerBox(mdLib, "info");
+        registerBox(mdLib, "plain");
+        registerBox(mdLib, "ok");
+        registerBox(mdLib, "bad");
 
-      render: function (tokens, idx) {
-        const m = tokens[idx].info.trim().match(/^warning\s+(.*)$/);
-          console.log(m)
-        if (tokens[idx].nesting === 1) {
-          return '<div class="box warn">' + mdLib.utils.escapeHtml(m[1]);
-        } else {
-            return '</div>\n';
-        }
- }});
-})};
+        mdLib.use(markdownItPrism);
+    });
+
+    eleventyConfig.addNunjucksFilter("formatdate", function (value) {
+        return value.toDateString();
+    });
+
+};
